@@ -1,0 +1,26 @@
+{
+  "grammars": [
+    {
+      "name": "ctrmml",
+      "camelcase": "Ctrmml",
+      "scope": "source.ctrmml",
+      "path": ".",
+      "file-types": ["mml"],
+      "highlights": "languages/ctrmml/highlights.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.0.9",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for ctrmml MML",
+    "authors": [
+      {
+        "name": "ulalume"
+      }
+    ]
+  },
+  "bindings": {
+    "c": true,
+    "node": true
+  }
+}

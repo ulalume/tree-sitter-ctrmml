@@ -1,0 +1,162 @@
+[
+  {
+    "type": "meta_command",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "meta_keyword",
+          "named": true
+        },
+        {
+          "type": "meta_platform_value",
+          "named": true
+        },
+        {
+          "type": "meta_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "at_command",
+          "named": true
+        },
+        {
+          "type": "command",
+          "named": true
+        },
+        {
+          "type": "command_with_number",
+          "named": true
+        },
+        {
+          "type": "escape_command",
+          "named": true
+        },
+        {
+          "type": "instrument_type",
+          "named": true
+        },
+        {
+          "type": "meta_command",
+          "named": true
+        },
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "operator",
+          "named": true
+        },
+        {
+          "type": "param_key",
+          "named": true
+        },
+        {
+          "type": "punctuation",
+          "named": true
+        },
+        {
+          "type": "rest",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "track_selector",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "at_command",
+    "named": true
+  },
+  {
+    "type": "command",
+    "named": true
+  },
+  {
+    "type": "command_with_number",
+    "named": true
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
+    "type": "escape_command",
+    "named": true
+  },
+  {
+    "type": "instrument_type",
+    "named": true
+  },
+  {
+    "type": "meta_keyword",
+    "named": true
+  },
+  {
+    "type": "meta_platform_value",
+    "named": true
+  },
+  {
+    "type": "meta_value",
+    "named": true
+  },
+  {
+    "type": "note",
+    "named": true
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "operator",
+    "named": true
+  },
+  {
+    "type": "param_key",
+    "named": true
+  },
+  {
+    "type": "punctuation",
+    "named": true
+  },
+  {
+    "type": "rest",
+    "named": true
+  },
+  {
+    "type": "string",
+    "named": true
+  },
+  {
+    "type": "track_selector",
+    "named": true
+  }
+]

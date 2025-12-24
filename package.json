@@ -1,0 +1,12 @@
+{
+  "name": "tree-sitter-ctrmml",
+  "version": "0.0.9",
+  "description": "Tree-sitter grammar for ctrmml MML",
+  "main": "grammar.js",
+  "keywords": [
+    "tree-sitter",
+    "mml",
+    "ctrmml"
+  ],
+  "license": "MIT"
+}
