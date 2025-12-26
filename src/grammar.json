@@ -104,7 +104,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "#(?:title|composer|author|date|comment|platform|option|game|composerj|programmer)"
+        "value": "#(?:title|composer|author|date|comment|platform|option|game|composerj|programmer|[A-Za-z][A-Za-z0-9_-]*)"
       }
     },
     "meta_platform_value": {

@@ -31,7 +31,7 @@ module.exports = grammar({
       ),
     meta_keyword: ($) =>
       token(
-        /#(?:title|composer|author|date|comment|platform|option|game|composerj|programmer)/,
+        /#(?:title|composer|author|date|comment|platform|option|game|composerj|programmer|[A-Za-z][A-Za-z0-9_-]*)/,
       ),
     meta_platform_value: ($) => token(/\s+(?:megadrive|mdsdrv)[^\n]*/),
     meta_value: ($) => token(/\s+[^\n]*/),
