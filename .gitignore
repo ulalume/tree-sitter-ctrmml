@@ -3,3 +3,5 @@ target
 **/*.rs.bk
 *.pdb
 **/mutants.out*/
+
+/tree-sitter-ctrmml.wasm
