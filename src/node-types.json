@@ -23,6 +23,22 @@
     }
   },
   {
+    "type": "platform_command",
+    "named": true,
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "platform_command_keyword",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -72,6 +88,10 @@
           "named": true
         },
         {
+          "type": "platform_command",
+          "named": true
+        },
+        {
           "type": "punctuation",
           "named": true
         },
@@ -89,6 +109,10 @@
         }
       ]
     }
+  },
+  {
+    "type": "'",
+    "named": false
   },
   {
     "type": "at_command",
@@ -141,6 +165,10 @@
   },
   {
     "type": "param_key",
+    "named": true
+  },
+  {
+    "type": "platform_command_keyword",
     "named": true
   },
   {

@@ -16,6 +16,7 @@ module.exports = grammar({
         $.command_with_number,
         $.command,
         $.escape_command,
+        $.platform_command,
         $.number,
         $.string,
         $.track_selector,
@@ -45,6 +46,16 @@ module.exports = grammar({
       token(/(?:o|l|q|Q|C|R|s|t|T|v|V|p|k|K|E|M|P|G|D|_+)[+-]?\d+(?:\.\d+)?/),
     command: ($) => token(/(?:o|l|q|s|t|v|p|k|__|_|\^|&)/),
     escape_command: ($) => token(/\\=?/),
+
+    platform_command: ($) =>
+      seq(
+        "'",
+        field("keyword", $.platform_command_keyword),
+        optional(field("args", token(/[^']+/))),
+        "'",
+      ),
+    platform_command_keyword: ($) =>
+      token(/(?:fm3|lfo|lforate|mode|pcmmode|pcmrate|write|tl[1-4])/),
 
     number: ($) => token(/[+-]?\d+(?:\.\d+)?/),
     string: ($) => token(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/),

@@ -1,4 +1,5 @@
 (comment) @comment
+(platform_command_keyword) @keyword
 (string) @string
 (number) @number
 
