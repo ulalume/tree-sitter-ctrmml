@@ -8,6 +8,7 @@
 (meta_platform_value) @keyword
 (meta_value) @keyword
 (#match? @keyword "^\\s+noextpitch\\s*$")
+(#set! "priority" 120)
 (meta_value) @string
 (at_command) @function
 (track_selector) @title
