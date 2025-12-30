@@ -58,7 +58,7 @@ module.exports = grammar({
       token(/(?:fm3|lfo|lforate|mode|pcmmode|pcmrate|write|tl[1-4])/),
 
     number: ($) => token(/[+-]?\d+(?:\.\d+)?/),
-    string: ($) => token(/"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/),
+    string: ($) => token(/"(?:[^"\\]|\\.)*"/),
 
     track_selector: ($) => token(/(?:\*[0-9]+|[A-Z]+)/),
 
