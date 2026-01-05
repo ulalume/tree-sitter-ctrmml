@@ -54,8 +54,7 @@ module.exports = grammar({
         optional(field("args", token(/[^']+/))),
         "'",
       ),
-    platform_command_keyword: ($) =>
-      token(/(?:fm3|lfo|lforate|mode|pcmmode|pcmrate|write|tl[1-4])/),
+    platform_command_keyword: ($) => token(/[A-Za-z][A-Za-z0-9_-]*/),
 
     number: ($) => token(/[+-]?\d+(?:\.\d+)?/),
     string: ($) => token(/"(?:[^"\\]|\\.)*"/),

@@ -218,7 +218,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "(?:fm3|lfo|lforate|mode|pcmmode|pcmrate|write|tl[1-4])"
+        "value": "[A-Za-z][A-Za-z0-9_-]*"
       }
     },
     "number": {
