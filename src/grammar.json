@@ -75,27 +75,275 @@
       ]
     },
     "meta_command": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "meta_keyword"
+          "name": "platform_meta"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "option_meta"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "group_meta"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "timesig_meta"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "generic_meta"
+        }
+      ]
+    },
+    "platform_meta": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "keyword",
+          "content": {
+            "type": "SYMBOL",
+            "name": "platform_meta_keyword"
+          }
         },
         {
           "type": "CHOICE",
           "members": [
             {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "meta_platform_value"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "meta_value"
-                }
-              ]
+              "type": "FIELD",
+              "name": "value",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "platform_known_value"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "meta_value"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "platform_meta_keyword": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 2,
+        "content": {
+          "type": "STRING",
+          "value": "#platform"
+        }
+      }
+    },
+    "platform_known_value": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\s+(?:megadrive|mdsdrv)[^\\n]*"
+      }
+    },
+    "option_meta": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "keyword",
+          "content": {
+            "type": "SYMBOL",
+            "name": "option_meta_keyword"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "value",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "option_known_value"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "meta_value"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "option_meta_keyword": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 2,
+        "content": {
+          "type": "STRING",
+          "value": "#option"
+        }
+      }
+    },
+    "option_known_value": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\s+noextpitch[^\\n]*"
+      }
+    },
+    "group_meta": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "keyword",
+          "content": {
+            "type": "SYMBOL",
+            "name": "group_meta_keyword"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "value",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "group_known_value"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "meta_value"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "group_meta_keyword": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 2,
+        "content": {
+          "type": "STRING",
+          "value": "#group"
+        }
+      }
+    },
+    "group_known_value": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\s+(?:bgm|se)[^\\n]*"
+      }
+    },
+    "timesig_meta": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "keyword",
+          "content": {
+            "type": "SYMBOL",
+            "name": "timesig_meta_keyword"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "value",
+              "content": {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "timesig_known_value"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "meta_value"
+                  }
+                ]
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "timesig_meta_keyword": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 2,
+        "content": {
+          "type": "STRING",
+          "value": "#timesig"
+        }
+      }
+    },
+    "timesig_known_value": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "\\s+(?:\\d+\\s*\\/\\s*\\d+|no)[^\\n]*"
+      }
+    },
+    "generic_meta": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "FIELD",
+          "name": "keyword",
+          "content": {
+            "type": "SYMBOL",
+            "name": "meta_keyword"
+          }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "value",
+              "content": {
+                "type": "SYMBOL",
+                "name": "meta_value"
+              }
             },
             {
               "type": "BLANK"
@@ -108,14 +356,7 @@
       "type": "TOKEN",
       "content": {
         "type": "PATTERN",
-        "value": "#(?:title|composer|author|date|comment|platform|option|game|composerj|programmer|[A-Za-z][A-Za-z0-9_-]*)"
-      }
-    },
-    "meta_platform_value": {
-      "type": "TOKEN",
-      "content": {
-        "type": "PATTERN",
-        "value": "\\s+(?:megadrive|mdsdrv)[^\\n]*"
+        "value": "#(?:title|composer|author|date|comment|game|composerj|programmer|include|pcmpath|[A-Za-z][A-Za-z0-9_-]*)"
       }
     },
     "meta_value": {

@@ -25,16 +25,63 @@ module.exports = grammar({
         $.param_key,
       ),
 
+    // Meta commands. The grammar discriminates a handful of keywords
+    // whose values carry meaning (#platform, #option, #group, #timesig)
+    // from the generic catch-all so highlights.scm can colour them
+    // differently — this mirrors the rules in
+    // `web-ctrmml/src/editor/mml-monarch.ts`. Each specific variant
+    // still falls back to `meta_value` when the value doesn't match
+    // a known keyword (e.g. `#timesig garbage`).
     meta_command: ($) =>
+      choice(
+        $.platform_meta,
+        $.option_meta,
+        $.group_meta,
+        $.timesig_meta,
+        $.generic_meta,
+      ),
+
+    platform_meta: ($) =>
       seq(
-        $.meta_keyword,
-        optional(choice($.meta_platform_value, $.meta_value)),
+        field("keyword", $.platform_meta_keyword),
+        optional(field("value", choice($.platform_known_value, $.meta_value))),
+      ),
+    platform_meta_keyword: ($) => token(prec(2, "#platform")),
+    platform_known_value: ($) => token(/\s+(?:megadrive|mdsdrv)[^\n]*/),
+
+    option_meta: ($) =>
+      seq(
+        field("keyword", $.option_meta_keyword),
+        optional(field("value", choice($.option_known_value, $.meta_value))),
+      ),
+    option_meta_keyword: ($) => token(prec(2, "#option")),
+    option_known_value: ($) => token(/\s+noextpitch[^\n]*/),
+
+    group_meta: ($) =>
+      seq(
+        field("keyword", $.group_meta_keyword),
+        optional(field("value", choice($.group_known_value, $.meta_value))),
+      ),
+    group_meta_keyword: ($) => token(prec(2, "#group")),
+    group_known_value: ($) => token(/\s+(?:bgm|se)[^\n]*/),
+
+    timesig_meta: ($) =>
+      seq(
+        field("keyword", $.timesig_meta_keyword),
+        optional(field("value", choice($.timesig_known_value, $.meta_value))),
+      ),
+    timesig_meta_keyword: ($) => token(prec(2, "#timesig")),
+    timesig_known_value: ($) => token(/\s+(?:\d+\s*\/\s*\d+|no)[^\n]*/),
+
+    generic_meta: ($) =>
+      seq(
+        field("keyword", $.meta_keyword),
+        optional(field("value", $.meta_value)),
       ),
     meta_keyword: ($) =>
       token(
-        /#(?:title|composer|author|date|comment|platform|option|game|composerj|programmer|[A-Za-z][A-Za-z0-9_-]*)/,
+        /#(?:title|composer|author|date|comment|game|composerj|programmer|include|pcmpath|[A-Za-z][A-Za-z0-9_-]*)/,
       ),
-    meta_platform_value: ($) => token(/\s+(?:megadrive|mdsdrv)[^\n]*/),
     meta_value: ($) => token(/\s+[^\n]*/),
     at_command: ($) => token(/@(?:[A-Za-z]\d+|\d+)/),
 

@@ -4,12 +4,26 @@
 (string) @string
 (number) @number
 
+; Meta keyword names (`#title`, `#platform`, ...) — every variant.
+; They all share the @preproc colour so the visual treatment stays
+; consistent regardless of which sub-rule matched.
 (meta_keyword) @preproc
-(meta_platform_value) @keyword
+(platform_meta_keyword) @preproc
+(option_meta_keyword) @preproc
+(group_meta_keyword) @preproc
+(timesig_meta_keyword) @preproc
+
+; Meta value classes:
+;   - "known" values (the meaningful keywords for each meta type) get
+;     @keyword so they pop visually next to the @preproc keyword.
+;   - The free-form `meta_value` fallback gets @string for everything
+;     else (song titles, composer names, arbitrary comments, etc.).
+(platform_known_value) @keyword
+(option_known_value) @keyword
+(group_known_value) @keyword
+(timesig_known_value) @keyword
 (meta_value) @string
-((meta_value) @keyword
-  (#match? @keyword "^\\s*noextpitch\\s*$")
-  (#set! "priority" 120))
+
 (at_command) @function
 (track_selector) @title
 

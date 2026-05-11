@@ -1,25 +1,119 @@
 [
   {
+    "type": "generic_meta",
+    "named": true,
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "meta_keyword",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "meta_value",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "group_meta",
+    "named": true,
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "group_meta_keyword",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "group_known_value",
+            "named": true
+          },
+          {
+            "type": "meta_value",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "meta_command",
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "meta_keyword",
+          "type": "generic_meta",
           "named": true
         },
         {
-          "type": "meta_platform_value",
+          "type": "group_meta",
           "named": true
         },
         {
-          "type": "meta_value",
+          "type": "option_meta",
+          "named": true
+        },
+        {
+          "type": "platform_meta",
+          "named": true
+        },
+        {
+          "type": "timesig_meta",
           "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "option_meta",
+    "named": true,
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "option_meta_keyword",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "meta_value",
+            "named": true
+          },
+          {
+            "type": "option_known_value",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -32,6 +126,36 @@
         "types": [
           {
             "type": "platform_command_keyword",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "platform_meta",
+    "named": true,
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "platform_meta_keyword",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "meta_value",
+            "named": true
+          },
+          {
+            "type": "platform_known_value",
             "named": true
           }
         ]
@@ -111,6 +235,36 @@
     }
   },
   {
+    "type": "timesig_meta",
+    "named": true,
+    "fields": {
+      "keyword": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "timesig_meta_keyword",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "meta_value",
+            "named": true
+          },
+          {
+            "type": "timesig_known_value",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "'",
     "named": false
   },
@@ -136,15 +290,19 @@
     "named": true
   },
   {
+    "type": "group_known_value",
+    "named": true
+  },
+  {
+    "type": "group_meta_keyword",
+    "named": true
+  },
+  {
     "type": "instrument_type",
     "named": true
   },
   {
     "type": "meta_keyword",
-    "named": true
-  },
-  {
-    "type": "meta_platform_value",
     "named": true
   },
   {
@@ -164,11 +322,27 @@
     "named": true
   },
   {
+    "type": "option_known_value",
+    "named": true
+  },
+  {
+    "type": "option_meta_keyword",
+    "named": true
+  },
+  {
     "type": "param_key",
     "named": true
   },
   {
     "type": "platform_command_keyword",
+    "named": true
+  },
+  {
+    "type": "platform_known_value",
+    "named": true
+  },
+  {
+    "type": "platform_meta_keyword",
     "named": true
   },
   {
@@ -181,6 +355,14 @@
   },
   {
     "type": "string",
+    "named": true
+  },
+  {
+    "type": "timesig_known_value",
+    "named": true
+  },
+  {
+    "type": "timesig_meta_keyword",
     "named": true
   },
   {
