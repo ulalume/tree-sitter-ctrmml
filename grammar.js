@@ -11,6 +11,7 @@ module.exports = grammar({
         $.meta_command,
         $.at_command,
         $.instrument_type,
+        $.key_signature,
         $.note,
         $.rest,
         $.command_with_number,
@@ -92,7 +93,17 @@ module.exports = grammar({
     command_with_number: ($) =>
       token(/(?:o|l|q|Q|C|R|s|t|T|v|V|p|k|K|E|M|P|G|D|_+)[+-]?\d+(?:\.\d+)?/),
     command: ($) => token(/(?:o|l|q|s|t|v|p|k|__|_|\^|&)/),
-    escape_command: ($) => token(/\\=?/),
+    // `\=<delay>,<volume>` is matched first (longer) so it wins over the
+    // bare `\` / `\=` forms via the regex alternation.
+    escape_command: ($) =>
+      token(/\\=[+-]?\d+(?:,[+-]?\d+)?|\\=?/),
+
+    // Key signature: `_{D}`, `_{c}`, `_{+cfg}`, `_{-b}`, `_{=f}`, `_{}`, …
+    // Matched as a single token so it lexes ahead of the lone `_` command
+    // and the bare `{` punctuation. Unterminated `_{…` is intentionally
+    // not matched here — it falls through to `command` + `{` so the
+    // syntax error surfaces.
+    key_signature: ($) => token(prec(2, /_\{[^}]*\}/)),
 
     platform_command: ($) =>
       seq(

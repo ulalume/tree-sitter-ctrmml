@@ -34,6 +34,7 @@
 (command_with_number) @keyword
 (command) @keyword
 (escape_command) @keyword
+(key_signature) @keyword
 
 (operator) @operator
 (punctuation) @punctuation.delimiter

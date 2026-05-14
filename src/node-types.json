@@ -192,6 +192,10 @@
           "named": true
         },
         {
+          "type": "key_signature",
+          "named": true
+        },
+        {
           "type": "meta_command",
           "named": true
         },
@@ -299,6 +303,10 @@
   },
   {
     "type": "instrument_type",
+    "named": true
+  },
+  {
+    "type": "key_signature",
     "named": true
   },
   {
